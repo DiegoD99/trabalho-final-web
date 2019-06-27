@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Registro</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+</head>
+<body>
+	<form action="/cliente/salvar" method="post" th:object="${cliente}">
+		
+		<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
+  			<span th:text="${mensagem}"></span>
+		</div>
+		
+		 <div class="alert alert-warning" role="alert" th:if="${#fields.detailedErrors()}">
+			<div th:each="detailedError : ${#fields.detailedErrors()}">
+				<span th:text="${detailedError.message}"></span>
+			</div>
+		</div>
+		<div class="container-fluid">
+		 <div class="form-group">
+			<label for="exampleFormControlInput1">Nome:</label>
+			<input class="form-control" type="text" name="nome" th:field="${cliente.nome}"/>
+			<label for="exampleFormControlInput1">CPF:</label>
+			<input class="form-control" type="text" name="cpf" th:field="${cliente.cpf}"/>
+			<label for="exampleFormControlInput1">Data de Nascimento:</label>
+			<input class="form-control" type="text" name="dataNasc" th:field="${cliente.dataNasc}"/>
+			<label for="exampleFormControlInput1">Endereço:</label>
+			<input class="form-control" type="text" name="endereco" th:field="${cliente.endereco}"/>
+			<label for="exampleFormControlInput1">Senha:</label>
+			<input class="form-control" type="password" name="senha" th:field="${cliente.senha}"/>
+			<label for="exampleFormControlInput1">Email:</label>
+			<input class="form-control"  type="text" name="email" th:field="${cliente.email}"/>
+		 </div>
+		 <button type="submit" class="btn btn-outline-primary">Enviar</button>
+		</div>
+		</form>
+	<script type="text/javascript" src="/js/bootstrap.min.css"></script>
+</body>
+</html>

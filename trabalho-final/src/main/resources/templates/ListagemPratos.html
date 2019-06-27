@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Pratos</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+</head>
+<body>
+	<div class="table-responsive">	
+		<table class="table">
+		  <thead class="thead-dark">
+		    <tr >
+		      <th scope="col">#</th>
+		      <th scope="col">Nome</th>
+		      <th scope="col">Preço</th>
+		      <th scope="col">Imagem</th>
+		      <th scope="col" colspan="2">Controle</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="prato:${listaDePratos}">
+		      <th scope="row" th:text="${prato.id}"></th>
+		      	<td th:text="${prato.nome}"></td>
+		      	<td th:text="${prato.preco}"></td>
+		      	<td><img class="img-fluid" width="200" height="200" alt="" th:src="'/images/' + ${prato.nome} + .png"></td>
+			  	<td><a class="btn btn-outline-danger" th:href="@{/prato/excluirPrato/{id}(id = ${prato.id})}">Apagar</a></td>
+			  	<td><a class="btn btn-outline-primary" th:href="@{/prato/atualizarPrato/{id}(id = ${prato.id})}">Atualizar</a></td>	
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+<script type="text/javascript" src="/js/bootstrap.min.css"></script>
+</body>
+</html>
